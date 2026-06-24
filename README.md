@@ -1,4 +1,4 @@
-# Load Balance: MARL Cloud Resource Management
+# Mô phỏng giải thuật lập lịch cân bằng hiệu quả năng lượng và SLA cho siêu trung tâm dữ liệu
 
 Dự án này là một hệ thống cân bằng tải và cấp phát tài nguyên (VM Allocation) trên nền tảng điện toán đám mây. Dự án sử dụng phương pháp **Học tăng cường đa tác tử (Multi-Agent Reinforcement Learning - MARL)** kết hợp với **Kiến trúc Lambda** (Online + Offline learning) thông qua các mô hình nhận diện dự đoán như Autoformer và BiLSTM. 
 
