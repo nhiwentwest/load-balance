@@ -1,0 +1,338 @@
+{
+  "tuning_method": "eda_derived_successive_halving_autorl",
+  "tuning_date": "2026-06-04T15:22:36.890924",
+  "promotion_ready": false,
+  "promotion_rule": "full episode test, at least two tuning seeds, at least two test seeds, and default or larger trial budget",
+  "total_trials": 2,
+  "finalist_count": 1,
+  "tuning_seeds": [
+    11
+  ],
+  "test_seeds": [
+    22
+  ],
+  "tuning_max_steps": 1,
+  "test_max_steps": 1,
+  "selection_rule": "lexicographic: minimize failures, slatah, energy, migrations; maximize reward",
+  "search_space": {
+    "underload_threshold": [
+      "float",
+      0.339555,
+      0.471654
+    ],
+    "overload_threshold": [
+      "float",
+      0.85,
+      0.923833
+    ],
+    "critical_threshold": [
+      "float",
+      0.9,
+      0.959874
+    ],
+    "anomaly_zscore": [
+      "float",
+      2.175743449799735,
+      2.824256550200265
+    ],
+    "ppo_lr": [
+      "log_float",
+      7.227493635732469e-05,
+      0.001245244956772334
+    ],
+    "ppo_gamma": [
+      "float",
+      0.9881658194110152,
+      0.9965337989703691
+    ],
+    "ppo_gae_lambda": [
+      "float",
+      0.8966327284185611,
+      0.9965337989703691
+    ],
+    "ppo_clip_epsilon": [
+      "float",
+      0.13514868995994697,
+      0.2648513100400531
+    ],
+    "ppo_update_epochs": [
+      "int",
+      2,
+      4
+    ],
+    "saturation_active_ratio": [
+      "float",
+      0.923833,
+      0.959874
+    ],
+    "saturation_overload_ratio": [
+      "float",
+      0.339555,
+      0.471654
+    ],
+    "excess_migration_start": [
+      "int",
+      1,
+      4
+    ],
+    "reward_overload_sla_manageable_weight": [
+      "log_float",
+      11.180339887498947,
+      223.60679774997897
+    ],
+    "reward_placer_sla_weight": [
+      "log_float",
+      5.590169943749474,
+      111.80339887498948
+    ],
+    "reward_placer_failure_weight": [
+      "log_float",
+      0.4472135954999579,
+      8.94427190999916
+    ],
+    "reward_excess_migration_weight": [
+      "log_float",
+      0.044721359549995794,
+      0.894427190999916
+    ],
+    "reward_underload_active_ratio_weight": [
+      "log_float",
+      0.6708203932499369,
+      13.416407864998739
+    ],
+    "reward_placer_shutdown_weight": [
+      "log_float",
+      0.6708203932499369,
+      13.416407864998739
+    ]
+  },
+  "best_trial": 2,
+  "best_params": {
+    "underload_threshold": 0.4476062086578766,
+    "overload_threshold": 0.8716112208832492,
+    "critical_threshold": 0.9394697582807383,
+    "anomaly_zscore": 2.206736984072689,
+    "ppo_lr": 0.00012102936447123669,
+    "ppo_gamma": 0.9906996767586215,
+    "ppo_gae_lambda": 0.9724030443296647,
+    "ppo_clip_epsilon": 0.14321172781136549,
+    "ppo_update_epochs": 4,
+    "saturation_active_ratio": 0.957902046540172,
+    "saturation_overload_ratio": 0.43042701081465334,
+    "excess_migration_start": 4,
+    "reward_overload_sla_manageable_weight": 133.89396975740368,
+    "reward_placer_sla_weight": 35.2974477694144,
+    "reward_placer_failure_weight": 0.5843919104628214,
+    "reward_excess_migration_weight": 0.04825011141073392,
+    "reward_underload_active_ratio_weight": 1.2164356443559279,
+    "reward_placer_shutdown_weight": 2.1232294071110607
+  },
+  "best_tuning_metrics": {
+    "steps": 1.0,
+    "reward": 0.0,
+    "energy_kwh": 0.17771063274064605,
+    "slatah": 0.0,
+    "overloads": 0.0,
+    "migrations": 0.0,
+    "failures": 0.0,
+    "score": 0.0,
+    "seed_rows": [
+      {
+        "seed": 11,
+        "steps": 1,
+        "reward": 0.0,
+        "energy_kwh": 0.17771063274064605,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0
+      }
+    ]
+  },
+  "best_test_metrics": {
+    "steps": 1.0,
+    "reward": 0.0,
+    "energy_kwh": 0.17976474369432324,
+    "slatah": 0.0,
+    "overloads": 0.0,
+    "migrations": 0.0,
+    "failures": 0.0,
+    "score": 0.0,
+    "seed_rows": [
+      {
+        "seed": 22,
+        "steps": 1,
+        "reward": 0.0,
+        "energy_kwh": 0.17976474369432324,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0
+      }
+    ]
+  },
+  "tuning_results": [
+    {
+      "trial": 2,
+      "params": {
+        "underload_threshold": 0.4476062086578766,
+        "overload_threshold": 0.8716112208832492,
+        "critical_threshold": 0.9394697582807383,
+        "anomaly_zscore": 2.206736984072689,
+        "ppo_lr": 0.00012102936447123669,
+        "ppo_gamma": 0.9906996767586215,
+        "ppo_gae_lambda": 0.9724030443296647,
+        "ppo_clip_epsilon": 0.14321172781136549,
+        "ppo_update_epochs": 4,
+        "saturation_active_ratio": 0.957902046540172,
+        "saturation_overload_ratio": 0.43042701081465334,
+        "excess_migration_start": 4,
+        "reward_overload_sla_manageable_weight": 133.89396975740368,
+        "reward_placer_sla_weight": 35.2974477694144,
+        "reward_placer_failure_weight": 0.5843919104628214,
+        "reward_excess_migration_weight": 0.04825011141073392,
+        "reward_underload_active_ratio_weight": 1.2164356443559279,
+        "reward_placer_shutdown_weight": 2.1232294071110607
+      },
+      "metrics": {
+        "steps": 1.0,
+        "reward": 0.0,
+        "energy_kwh": 0.17771063274064605,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0,
+        "score": 0.0,
+        "seed_rows": [
+          {
+            "seed": 11,
+            "steps": 1,
+            "reward": 0.0,
+            "energy_kwh": 0.17771063274064605,
+            "slatah": 0.0,
+            "overloads": 0.0,
+            "migrations": 0.0,
+            "failures": 0.0
+          }
+        ]
+      },
+      "elapsed_sec": 2.0497984886169434
+    },
+    {
+      "trial": 1,
+      "params": {
+        "underload_threshold": 0.4138802145211903,
+        "overload_threshold": 0.8886285969389767,
+        "critical_threshold": 0.9482716167928512,
+        "anomaly_zscore": 2.546743356671648,
+        "ppo_lr": 0.0002569487278796482,
+        "ppo_gamma": 0.9928417363914264,
+        "ppo_gae_lambda": 0.9728272548264337,
+        "ppo_clip_epsilon": 0.1636478874517502,
+        "ppo_update_epochs": 4,
+        "saturation_active_ratio": 0.9422587438273642,
+        "saturation_overload_ratio": 0.35219351639233587,
+        "excess_migration_start": 1,
+        "reward_overload_sla_manageable_weight": 221.65659057396095,
+        "reward_placer_sla_weight": 93.55395976906985,
+        "reward_placer_failure_weight": 7.294253858300648,
+        "reward_excess_migration_weight": 0.4065557644533358,
+        "reward_underload_active_ratio_weight": 5.911123561186131,
+        "reward_placer_shutdown_weight": 6.562927283741854
+      },
+      "metrics": {
+        "steps": 1.0,
+        "reward": 0.0,
+        "energy_kwh": 0.17881728305085678,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0,
+        "score": 0.0,
+        "seed_rows": [
+          {
+            "seed": 11,
+            "steps": 1,
+            "reward": 0.0,
+            "energy_kwh": 0.17881728305085678,
+            "slatah": 0.0,
+            "overloads": 0.0,
+            "migrations": 0.0,
+            "failures": 0.0
+          }
+        ]
+      },
+      "elapsed_sec": 1.7613120079040527
+    }
+  ],
+  "test_results": [
+    {
+      "trial": 2,
+      "params": {
+        "underload_threshold": 0.4476062086578766,
+        "overload_threshold": 0.8716112208832492,
+        "critical_threshold": 0.9394697582807383,
+        "anomaly_zscore": 2.206736984072689,
+        "ppo_lr": 0.00012102936447123669,
+        "ppo_gamma": 0.9906996767586215,
+        "ppo_gae_lambda": 0.9724030443296647,
+        "ppo_clip_epsilon": 0.14321172781136549,
+        "ppo_update_epochs": 4,
+        "saturation_active_ratio": 0.957902046540172,
+        "saturation_overload_ratio": 0.43042701081465334,
+        "excess_migration_start": 4,
+        "reward_overload_sla_manageable_weight": 133.89396975740368,
+        "reward_placer_sla_weight": 35.2974477694144,
+        "reward_placer_failure_weight": 0.5843919104628214,
+        "reward_excess_migration_weight": 0.04825011141073392,
+        "reward_underload_active_ratio_weight": 1.2164356443559279,
+        "reward_placer_shutdown_weight": 2.1232294071110607
+      },
+      "tuning_metrics": {
+        "steps": 1.0,
+        "reward": 0.0,
+        "energy_kwh": 0.17771063274064605,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0,
+        "score": 0.0,
+        "seed_rows": [
+          {
+            "seed": 11,
+            "steps": 1,
+            "reward": 0.0,
+            "energy_kwh": 0.17771063274064605,
+            "slatah": 0.0,
+            "overloads": 0.0,
+            "migrations": 0.0,
+            "failures": 0.0
+          }
+        ]
+      },
+      "test_metrics": {
+        "steps": 1.0,
+        "reward": 0.0,
+        "energy_kwh": 0.17976474369432324,
+        "slatah": 0.0,
+        "overloads": 0.0,
+        "migrations": 0.0,
+        "failures": 0.0,
+        "score": 0.0,
+        "seed_rows": [
+          {
+            "seed": 22,
+            "steps": 1,
+            "reward": 0.0,
+            "energy_kwh": 0.17976474369432324,
+            "slatah": 0.0,
+            "overloads": 0.0,
+            "migrations": 0.0,
+            "failures": 0.0
+          }
+        ]
+      },
+      "elapsed_sec": 2.120323657989502
+    }
+  ]
+}

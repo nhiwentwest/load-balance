@@ -1,0 +1,140 @@
+{
+  "versions": {
+    "agent1": [
+      {
+        "version": 1,
+        "path": "models/agent1_v1.pt",
+        "filename": "agent1_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.723648"
+      }
+    ],
+    "agent2": [
+      {
+        "version": 1,
+        "path": "models/agent2_v1.pt",
+        "filename": "agent2_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.724596"
+      }
+    ],
+    "agent3": [
+      {
+        "version": 1,
+        "path": "models/agent3_v1.pt",
+        "filename": "agent3_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.725413"
+      }
+    ],
+    "agent4": [
+      {
+        "version": 1,
+        "path": "models/agent4_v1.pt",
+        "filename": "agent4_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.726252"
+      }
+    ],
+    "central_critic": [
+      {
+        "version": 1,
+        "path": "models/central_critic_v1.pt",
+        "filename": "central_critic_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.727113"
+      }
+    ],
+    "autoformer": [
+      {
+        "version": 1,
+        "path": "models/autoformer_v1.pt",
+        "filename": "autoformer_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.727738"
+      }
+    ],
+    "bilstm": [
+      {
+        "version": 1,
+        "path": "models/bilstm_v1.pt",
+        "filename": "bilstm_v1.pt",
+        "metrics": {
+          "val_loss": 0.0,
+          "source": "baseline_v7"
+        },
+        "val_loss": 0.0,
+        "created_at": "2026-06-01T07:17:35.728798"
+      },
+      {
+        "version": 2,
+        "path": "models/bilstm_v2.pt",
+        "filename": "bilstm_v2.pt",
+        "metrics": {
+          "val_loss": 0.029464947059750557,
+          "num_samples": 1400,
+          "step": 84
+        },
+        "val_loss": 0.029464947059750557,
+        "created_at": "2026-06-01T07:18:12.647607"
+      },
+      {
+        "version": 3,
+        "path": "models/bilstm_v3.pt",
+        "filename": "bilstm_v3.pt",
+        "metrics": {
+          "val_loss": 0.028795301914215088,
+          "num_samples": 3080,
+          "step": 168
+        },
+        "val_loss": 0.028795301914215088,
+        "created_at": "2026-06-01T07:18:47.767584"
+      },
+      {
+        "version": 4,
+        "path": "models/bilstm_v4.pt",
+        "filename": "bilstm_v4.pt",
+        "metrics": {
+          "val_loss": 0.0360260084271431,
+          "num_samples": 4760,
+          "step": 252
+        },
+        "val_loss": 0.0360260084271431,
+        "created_at": "2026-06-01T07:19:26.338365"
+      }
+    ]
+  },
+  "active": {
+    "agent1": 1,
+    "agent2": 1,
+    "agent3": 1,
+    "agent4": 1,
+    "central_critic": 1,
+    "autoformer": 1,
+    "bilstm": 1
+  }
+}

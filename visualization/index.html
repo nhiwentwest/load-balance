@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARL Data Center Energy Optimizer - 3D Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Vanilla CSS Custom Style -->
+    <link rel="stylesheet" href="index.css">
+    
+    <!-- Three.js and GSAP from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar - Glassmorphism style -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-server neon-pulse"></i>
+                <div class="brand-text">
+                    <h1>DACN OPTIMIZER</h1>
+                    <span class="subtext">4-Agent MARL Framework</span>
+                </div>
+            </div>
+
+            <!-- Day Selector -->
+            <div class="day-selector-panel panel-card">
+                <h3 class="panel-title"><i class="fa-solid fa-calendar-days"></i> SELECT SIMULATION DAY</h3>
+                <div class="control-row">
+                    <div class="select-container">
+                        <select id="day-select" class="day-select">
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controller Section -->
+            <div class="control-panel panel-card">
+                <h3 class="panel-title"><i class="fa-solid fa-sliders"></i> SIMULATION CONTROL</h3>
+                <div class="btn-group">
+                    <button id="btn-prev" class="ctrl-btn" title="Previous Step"><i class="fa-solid fa-backward-step"></i></button>
+                    <button id="btn-play" class="ctrl-btn play-btn" title="Play"><i class="fa-solid fa-play"></i></button>
+                    <button id="btn-next" class="ctrl-btn" title="Next Step"><i class="fa-solid fa-forward-step"></i></button>
+                    <button id="btn-reset" class="ctrl-btn" title="Reset"><i class="fa-solid fa-rotate-left"></i></button>
+                </div>
+                
+                <div class="control-row">
+                    <label for="speed-slider"><i class="fa-solid fa-gauge-high"></i> Playback Speed</label>
+                    <div class="slider-container">
+                        <input type="range" id="speed-slider" min="1" max="10" value="2">
+                        <span id="speed-val">2x</span>
+                    </div>
+                </div>
+
+                <div class="control-row">
+                    <div class="timeline-header">
+                        <span><i class="fa-regular fa-clock"></i> Timeline Progress</span>
+                        <span id="timeline-step">Step 0 / 288</span>
+                    </div>
+                    <input type="range" id="timeline-slider" min="0" max="287" value="0" class="timeline-slider">
+                </div>
+            </div>
+
+            <!-- Global Metrics -->
+            <div class="metrics-panel panel-card">
+                <h3 class="panel-title"><i class="fa-solid fa-chart-line"></i> LIVE METRICS</h3>
+                
+                <div class="metric-row">
+                    <div class="metric-item">
+                        <span class="metric-label">Energy Consumed</span>
+                        <span id="metric-energy" class="metric-value font-mono">0.00 <span class="unit">kWh</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Energy Saving vs Base</span>
+                        <span id="metric-saving" class="metric-value text-green font-mono">0.0%</span>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="metric-item">
+                        <span class="metric-label">SLATAH Violation</span>
+                        <span id="metric-slatah" class="metric-value text-amber font-mono">0.0000%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">VM Migrations</span>
+                        <span id="metric-migrations" class="metric-value font-mono">0</span>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="metric-item full-width">
+                        <span class="metric-label">Step Reward</span>
+                        <div class="reward-container">
+                            <span id="metric-reward" class="metric-value font-mono">-0.00</span>
+                            <div class="sparkline-wrapper">
+                                <canvas id="reward-sparkline" width="120" height="25"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent Decisions Panel -->
+            <div class="agents-panel panel-card">
+                <h3 class="panel-title"><i class="fa-solid fa-brain"></i> MARL COOPERATIVE AGENTS</h3>
+                
+                <div class="agent-item" id="agent-a1">
+                    <div class="agent-header">
+                        <div class="agent-badge a1-color">A1</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Underload Detector</span>
+                            <span class="agent-status" id="a1-status">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-indicator" id="a1-indicator"></div>
+                </div>
+
+                <div class="agent-item" id="agent-a2">
+                    <div class="agent-header">
+                        <div class="agent-badge a2-color">A2</div>
+                        <div class="agent-info">
+                            <span class="agent-name">Overload Detector</span>
+                            <span class="agent-status" id="a2-status">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-indicator" id="a2-indicator"></div>
+                </div>
+
+                <div class="agent-item" id="agent-a3">
+                    <div class="agent-header">
+                        <div class="agent-badge a3-color">A3</div>
+                        <div class="agent-info">
+                            <span class="agent-name">VM Selector</span>
+                            <span class="agent-status" id="a3-status">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-indicator" id="a3-indicator"></div>
+                </div>
+
+                <div class="agent-item" id="agent-a4">
+                    <div class="agent-header">
+                        <div class="agent-badge a4-color">A4</div>
+                        <div class="agent-info">
+                            <span class="agent-name">VM Placer</span>
+                            <span class="agent-status" id="a4-status">Idle</span>
+                        </div>
+                    </div>
+                    <div class="agent-indicator" id="a4-indicator"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Display -->
+        <main class="main-display">
+            <!-- 3D Canvas wrapper -->
+            <div id="canvas-container">
+                <div class="loading-overlay" id="loading-overlay">
+                    <div class="spinner"></div>
+                    <p>Replaying MARL Agent Decisions from Checkpoint...</p>
+                </div>
+            </div>
+
+            <!-- Bottom Floating HUD -->
+            <div class="hud-container">
+                <div class="hud-item">
+                    <span class="hud-label">Adaptive Underload threshold</span>
+                    <span class="hud-value font-mono text-blue" id="hud-th-under">47.1%</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Adaptive Overload threshold</span>
+                    <span class="hud-value font-mono text-orange" id="hud-th-over">92.3%</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Critical Overload threshold</span>
+                    <span class="hud-value font-mono text-red" id="hud-th-crit">93.9%</span>
+                </div>
+                <div class="hud-item legend-item">
+                    <div class="legend-color-box normal"></div>
+                    <span>Normal</span>
+                </div>
+                <div class="hud-item legend-item">
+                    <div class="legend-color-box overload"></div>
+                    <span>Overload</span>
+                </div>
+                <div class="hud-item legend-item">
+                    <div class="legend-color-box shutdown"></div>
+                    <span>Shutdown</span>
+                </div>
+            </div>
+
+            <!-- Diagnostics log panel -->
+            <div class="diagnostic-panel">
+                <div class="panel-header">
+                    <span><i class="fa-solid fa-terminal"></i> LIVE AGENT MIGRATION LOGS</span>
+                    <button id="btn-clear-logs" class="clear-btn">Clear</button>
+                </div>
+                <div class="log-output" id="log-output">
+                    <div class="log-line system">System initialized. Ready to simulate.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Data generated by exporter -->
+    <script src="episode_data.js"></script>
+    <!-- Visualization logic -->
+    <script src="app.js"></script>
+</body>
+</html>

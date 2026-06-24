@@ -1,0 +1,42 @@
+# IDEs and OS
+.idea/
+.DS_Store
+.claude/
+
+# Build & Cache
+__pycache__/
+target/
+*.class
+*.pyc
+
+# Databases & Models & Data
+*.db
+*.sqlite
+*.sqlite3
+*.pt
+*.csv
+data/
+eda_data/
+monitor_proof_*/
+results_baseline_100ep/
+backup_pre_parallel/
+
+# Latex, Docs & Backup Files
+*.bak
+*.tex
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+*.xdv
+*.toc
+*.txt
+*.ipynb
+sections/
+
+# Ignore all markdown except README
+*.md
+!README.md

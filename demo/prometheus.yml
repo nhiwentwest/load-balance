@@ -1,0 +1,19 @@
+# Local Prometheus config for the DACN hyperparameter demo.
+# Scrapes the metrics endpoint started by demo/serve_metrics.py.
+#
+# Run:
+#   prometheus --config.file=demo/prometheus.yml --storage.tsdb.path=/tmp/dacn_tsdb
+# Then open http://127.0.0.1:9090 and query e.g.:
+#   dacn_config_overload_threshold
+#   dacn_config_ora_lite_history_sample_count
+#   dacn_config_source_info
+
+global:
+  scrape_interval: 2s
+  evaluation_interval: 2s
+
+scrape_configs:
+  - job_name: dacn_local
+    static_configs:
+      - targets:
+          - 127.0.0.1:8000
