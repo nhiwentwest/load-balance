@@ -4,7 +4,7 @@ Dự án này là một hệ thống cân bằng tải và cấp phát tài nguy
 
 Hệ thống được thiết kế phân tán: Môi trường mô phỏng (Environment) chạy bằng **Java (CloudSim Plus)** và các mô hình Học sâu (Agents) chạy bằng **Python (PyTorch)**, giao tiếp qua cầu nối Py4J.
 
-## 🗂 Cấu trúc Project
+## Cấu trúc Project
 
 ### 1. Phần Python (`python/`) - Mô hình & Huấn luyện
 Thư mục này chứa toàn bộ logic về trí tuệ nhân tạo, RL agents và lập lịch.
@@ -25,7 +25,7 @@ Thư mục này chứa môi trường giả lập Data Center vật lý và các
 - **`VmAllocationPolicyACO.java`, `VmAllocationPolicyPSO.java`, `VmAllocationPolicyTabuSearch.java`**: Các thuật toán cấp phát truyền thống (Thuật toán Kiến, Bầy chim, Tabu Search) dùng làm Baseline để chạy so sánh.
 - **`CompareAllAlgorithms.java`** & **`Benchmark.java`**: Các script chạy so sánh hiệu năng của mô hình MARL với các thuật toán truyền thống.
 
-## 🚀 Cách làm việc với Mô hình
+## Cách làm việc với Mô hình
 
 1. **Huấn luyện mô hình từ đầu (Train MARL)**:
    - Đảm bảo môi trường Java (`Py4jBridge`) đã được chạy trước để mở cổng giao tiếp.
